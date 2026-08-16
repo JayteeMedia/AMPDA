@@ -1,0 +1,15 @@
+﻿{
+    "Version":"0.1.0",
+
+    "Workspace":false,
+
+    "Infrastructure":false,
+
+    "Database":false,
+
+    "Backend":false,
+
+    "Dashboard":false,
+
+    "Worker":false
+}
