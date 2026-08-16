@@ -1,36 +1,13 @@
 ﻿{
-  "name": "ampda",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo No tests yet",
-    "prepare": "husky"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.22.0",
-      "onFail": "download"
-    }
-  },
-  "type": "module",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@nx/workspace": "^23.1.1",
-    "@types/node": "^26.2.0",
-    "eslint": "^10.8.1",
-    "eslint-config-prettier": "^10.1.8",
-    "husky": "^9.1.7",
-    "lint-staged": "^17.3.0",
-    "nx": "23.1.1",
-    "prettier": "^3.9.6",
-    "typescript": "^7.0.2",
-    "typescript-eslint": "^8.67.0"
-  },
-  "nx": {}
+    "private":  true,
+    "name":  "ampda",
+    "version":  "0.1.0",
+    "packageManager":  "pnpm@11.22.0",
+    "scripts":  {
+                    "test":  "echo \"No tests yet\"",
+                    "format":  "prettier . --write",
+                    "build":  "echo \"No build targets yet\"",
+                    "verify":  "node -e \"console.log(\u0027Repository OK\u0027)\"",
+                    "lint":  "echo \"No lint targets yet\""
+                }
 }
-
