@@ -5,9 +5,10 @@ import type { AgentContext } from "../context/AgentContext.js";
 
 import { AgentStatus } from "../types/AgentStatus.js";
 
-export abstract class BaseAgent
-  implements Agent
-{
+export abstract class BaseAgent<
+  TPayload = unknown,
+  TResult = unknown,
+> implements Agent<TPayload, TResult> {
   public status =
     AgentStatus.Idle;
 
@@ -16,22 +17,26 @@ export abstract class BaseAgent
   ) {}
 
   async start(): Promise<void> {
-    this.status = AgentStatus.Running;
+    this.status =
+      AgentStatus.Running;
   }
 
   async stop(): Promise<void> {
-    this.status = AgentStatus.Stopped;
+    this.status =
+      AgentStatus.Stopped;
   }
 
   async pause(): Promise<void> {
-    this.status = AgentStatus.Paused;
+    this.status =
+      AgentStatus.Paused;
   }
 
   async resume(): Promise<void> {
-    this.status = AgentStatus.Running;
+    this.status =
+      AgentStatus.Running;
   }
 
-  abstract execute<T>(
-    job: Job<T>,
-  ): Promise<T>;
+  abstract execute(
+    job: Job<TPayload, TResult>,
+  ): Promise<TResult>;
 }

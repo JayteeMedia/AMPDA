@@ -1,15 +1,13 @@
-#!/usr/bin/env node
+export * from "./bootstrap/bootstrap.js";
 
-import { bootstrap } from "./bootstrap/bootstrap.js";
+export * from "./events/EventBus.js";
 
-async function main(): Promise<void> {
-  try {
-    await bootstrap();
-  } catch (error) {
-    console.error("[AMPDA] Fatal startup error");
-    console.error(error);
-    process.exit(1);
-  }
-}
+export * from "./logger/Logger.js";
+export * from "./logger/LoggerFactory.js";
 
-void main();
+export * from "./runtime/Runtime.js";
+
+export * from "./services/JobEngineService.js";
+export * from "./services/ServiceRegistry.js";
+
+export * from "./workflows/index.js";

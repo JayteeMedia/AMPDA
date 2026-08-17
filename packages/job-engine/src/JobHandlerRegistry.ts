@@ -1,58 +1,82 @@
 import type { Job } from "./Job.js";
 
-export type JobHandler<T = unknown> = (
-  job: Job<T>,
-) => Promise<T>;
+export type JobHandler<
+  TPayload = unknown,
+  TResult = unknown,
+> = (
+  job: Job<TPayload, TResult>,
+) => Promise<TResult>;
 
 export class JobHandlerRegistry {
-  private readonly handlers = new Map<
-    string,
-    JobHandler<any>
-  >();
+  private readonly handlers =
+    new Map<
+      string,
+      JobHandler<any, any>
+    >();
 
-  register<T>(
+  register<
+    TPayload,
+    TResult,
+  >(
     name: string,
-    handler: JobHandler<T>,
+    handler: JobHandler<
+      TPayload,
+      TResult
+    >,
   ): void {
-    if (this.handlers.has(name)) {
-      throw new Error(
-        `Job handler "${name}" already exists.`,
-      );
-    }
-
     this.handlers.set(
       name,
-      handler as JobHandler<any>,
+      handler,
     );
   }
 
-  resolve<T>(
+  resolve<
+    TPayload,
+    TResult,
+  >(
     name: string,
-  ): JobHandler<T> {
-    const handler = this.handlers.get(name);
+  ): JobHandler<
+    TPayload,
+    TResult
+  > {
+    const handler =
+      this.handlers.get(name);
 
     if (!handler) {
       throw new Error(
-        `No handler registered for "${name}".`,
+        `No handler registered for '${name}'.`,
       );
     }
 
-    return handler as JobHandler<T>;
+    return handler as JobHandler<
+      TPayload,
+      TResult
+    >;
   }
 
-  has(name: string): boolean {
+  has(
+    name: string,
+  ): boolean {
     return this.handlers.has(name);
   }
 
-  unregister(name: string): void {
-    this.handlers.delete(name);
+  remove(
+    name: string,
+  ): boolean {
+    return this.handlers.delete(name);
   }
 
   clear(): void {
     this.handlers.clear();
   }
 
+  size(): number {
+    return this.handlers.size;
+  }
+
   list(): string[] {
-    return [...this.handlers.keys()];
+    return [
+      ...this.handlers.keys(),
+    ];
   }
 }

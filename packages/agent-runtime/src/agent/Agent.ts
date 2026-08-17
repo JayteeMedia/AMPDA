@@ -3,7 +3,10 @@ import type { Job } from "@ampda/job-engine";
 import type { AgentContext } from "../context/AgentContext.js";
 import type { AgentStatus } from "../types/AgentStatus.js";
 
-export interface Agent {
+export interface Agent<
+  TPayload = unknown,
+  TResult = unknown,
+> {
   readonly context: AgentContext;
 
   readonly status: AgentStatus;
@@ -16,7 +19,7 @@ export interface Agent {
 
   resume(): Promise<void>;
 
-  execute<T>(
-    job: Job<T>,
-  ): Promise<T>;
+  execute(
+    job: Job<TPayload, TResult>,
+  ): Promise<TResult>;
 }

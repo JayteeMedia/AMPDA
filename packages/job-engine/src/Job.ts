@@ -1,75 +1,32 @@
-import type { JobContext } from "./JobContext.js";
-import type { JobId } from "./JobId.js";
-import type { JobResult } from "./JobResult.js";
+import type { JobPriority } from "./JobPriority.js";
+import type { JobStatus } from "./JobStatus.js";
 
-import { JobPriority } from "./JobPriority.js";
-import { JobStatus } from "./JobStatus.js";
+export interface Job<
+  TPayload = unknown,
+  TResult = unknown,
+> {
+  id: string;
 
-export interface JobOptions {
-  id: JobId;
   name: string;
-  priority?: JobPriority;
-  context?: JobContext;
-}
 
-export class Job<T = unknown> {
-  public readonly id: JobId;
+  payload: TPayload;
 
-  public readonly name: string;
+  priority: JobPriority;
 
-  public readonly priority: JobPriority;
+  status: JobStatus;
 
-  public status: JobStatus;
+  metadata: Record<
+    string,
+    unknown
+  >;
 
-  public readonly createdAt: Date;
+  createdAt: Date;
 
-  public readonly context: JobContext;
+  startedAt?: Date;
 
-  public result?: JobResult<T>;
+  completedAt?: Date;
 
-  constructor(options: JobOptions) {
-    this.id = options.id;
+  result?: TResult;
 
-    this.name = options.name;
-
-    this.priority =
-      options.priority ?? JobPriority.Normal;
-
-    this.status = JobStatus.Pending;
-
-    this.createdAt = new Date();
-
-    this.context =
-      options.context ?? {
-        metadata: {},
-      };
-  }
-
-  start(): void {
-    this.status = JobStatus.Running;
-  }
-
-  complete(result: JobResult<T>): void {
-    this.result = result;
-
-    this.status = JobStatus.Completed;
-  }
-
-  fail(result: JobResult<T>): void {
-    this.result = result;
-
-    this.status = JobStatus.Failed;
-  }
-
-  cancel(): void {
-    this.status = JobStatus.Cancelled;
-  }
-
-  isFinished(): boolean {
-    return (
-      this.status === JobStatus.Completed ||
-      this.status === JobStatus.Failed ||
-      this.status === JobStatus.Cancelled
-    );
-  }
+  error?: Error;
 }

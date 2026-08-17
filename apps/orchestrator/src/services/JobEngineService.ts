@@ -17,28 +17,55 @@ export class JobEngineService {
   public readonly handlers =
     new JobHandlerRegistry();
 
-  register<T>(
+  register<
+    TPayload,
+    TResult,
+  >(
     name: string,
-    handler: JobHandler<T>,
+    handler: JobHandler<
+      TPayload,
+      TResult
+    >,
   ): void {
-    this.handlers.register(name, handler);
+    this.handlers.register(
+      name,
+      handler,
+    );
   }
 
-  submit(job: Job): void {
+  submit<
+    TPayload,
+    TResult,
+  >(
+    job: Job<
+      TPayload,
+      TResult
+    >,
+  ): void {
     this.queue.enqueue(job);
   }
 
-  async executeNext(): Promise<
-    JobResult | undefined
+  async executeNext<
+    TPayload,
+    TResult,
+  >(): Promise<
+    JobResult<TResult> | undefined
   > {
-    const job = this.queue.dequeue();
+    const job =
+      this.queue.dequeue<
+        TPayload,
+        TResult
+      >();
 
     if (!job) {
       return undefined;
     }
 
     const handler =
-      this.handlers.resolve(job.name);
+      this.handlers.resolve<
+        TPayload,
+        TResult
+      >(job.name);
 
     return this.executor.execute(
       job,

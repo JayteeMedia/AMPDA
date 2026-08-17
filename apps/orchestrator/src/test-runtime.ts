@@ -1,39 +1,43 @@
 import {
-  Job,
   JobPriority,
+  JobStatus,
 } from "@ampda/job-engine";
 
-import { runtime } from "./runtime/Runtime.js";
 import { jobEngine } from "./services/JobEngineService.js";
 
 async function main(): Promise<void> {
-  await runtime.start();
-
-  const job = new Job<string>({
-    id: "runtime-001",
-    name: "Runtime Test",
-    priority: JobPriority.Normal,
-  });
-
-  jobEngine.register(
-    "Runtime Test",
-    async () => "AMPDA Runtime OK",
+  jobEngine.register<
+    string,
+    string
+  >(
+    "test",
+    async (job) => {
+      return `Processed: ${job.payload}`;
+    },
   );
 
-  jobEngine.submit(job);
+  const job = {
+    id: "job-1",
 
-  console.log("");
-  console.log("Queue Size:", jobEngine.size());
+    name: "test",
+
+    payload: "Hello AMPDA",
+
+    priority: JobPriority.Normal,
+
+    status: JobStatus.Pending,
+
+    metadata: {},
+
+    createdAt: new Date(),
+  };
+
+  jobEngine.submit(job);
 
   const result =
     await jobEngine.executeNext();
 
-  console.log("");
-  console.log("Status:", job.status);
-  console.log("Success:", result?.success);
-  console.log("Result:", result?.data);
-
-  await runtime.stop();
+  console.log(result);
 }
 
 main().catch(console.error);

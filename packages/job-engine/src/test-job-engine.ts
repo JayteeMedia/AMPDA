@@ -1,8 +1,9 @@
 import {
-  Job,
   JobExecutor,
   JobPriority,
   JobQueue,
+  JobStatus,
+  type Job,
 } from "./index.js";
 
 async function main(): Promise<void> {
@@ -10,13 +11,25 @@ async function main(): Promise<void> {
 
   const executor = new JobExecutor();
 
-  const job = new Job<string>({
+  const job: Job<string, string> = {
     id: "job-001",
+
     name: "HelloJob",
+
+    payload: "AMPDA",
+
     priority: JobPriority.Normal,
-  });
+
+    status: JobStatus.Pending,
+
+    metadata: {},
+
+    createdAt: new Date(),
+  };
 
   queue.enqueue(job);
+
+  console.log("");
 
   console.log("Queue Size:", queue.size());
 
@@ -28,18 +41,26 @@ async function main(): Promise<void> {
 
   const result = await executor.execute(
     next,
-    async () => {
-      return "AMPDA Job Engine Online";
+    async (job) => {
+      return `AMPDA Job Engine Online: ${job.payload}`;
     },
   );
 
   console.log("");
 
   console.log("Job:", next.name);
+
   console.log("Status:", next.status);
+
   console.log("Success:", result.success);
+
   console.log("Result:", result.data);
+
   console.log("Duration:", result.durationMs, "ms");
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error(error);
+
+  process.exit(1);
+});

@@ -1,33 +1,48 @@
-import { Job } from "./Job.js";
+import type { Job } from "./Job.js";
 
 export class JobQueue {
-  private readonly queue: Job[] = [];
+  private readonly jobs: Job<any, any>[] = [];
 
-  enqueue(job: Job): void {
-    this.queue.push(job);
+  enqueue<
+    TPayload,
+    TResult,
+  >(
+    job: Job<TPayload, TResult>,
+  ): void {
+    this.jobs.push(job);
   }
 
-  dequeue(): Job | undefined {
-    return this.queue.shift();
+  dequeue<
+    TPayload,
+    TResult,
+  >(): Job<TPayload, TResult> | undefined {
+    return this.jobs.shift() as
+      | Job<TPayload, TResult>
+      | undefined;
   }
 
-  peek(): Job | undefined {
-    return this.queue[0];
-  }
-
-  size(): number {
-    return this.queue.length;
-  }
-
-  isEmpty(): boolean {
-    return this.queue.length === 0;
+  peek<
+    TPayload,
+    TResult,
+  >(): Job<TPayload, TResult> | undefined {
+    return this.jobs[0] as
+      | Job<TPayload, TResult>
+      | undefined;
   }
 
   clear(): void {
-    this.queue.length = 0;
+    this.jobs.length = 0;
   }
 
-  jobs(): readonly Job[] {
-    return this.queue;
+  size(): number {
+    return this.jobs.length;
+  }
+
+  isEmpty(): boolean {
+    return this.jobs.length === 0;
+  }
+
+  list(): readonly Job<any, any>[] {
+    return this.jobs;
   }
 }

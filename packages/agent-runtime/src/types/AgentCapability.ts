@@ -1,12 +1,15 @@
 export enum AgentCapability {
+  Planning = "planning",
+
   Lyrics = "lyrics",
-  Music = "music",
-  Artwork = "artwork",
-  Metadata = "metadata",
-  Distribution = "distribution",
-  SocialMedia = "social-media",
-  Analytics = "analytics",
-  Workflow = "workflow",
-  Memory = "memory",
-  Scheduling = "scheduling",
+
+  PromptGeneration = "prompt-generation",
+
+  MusicGeneration = "music-generation",
+
+  ArtworkGeneration = "artwork-generation",
+
+  MetadataGeneration = "metadata-generation",
+
+  ProjectExport = "project-export",
 }

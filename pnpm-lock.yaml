@@ -17,18 +17,27 @@ importers:
 
   apps/cli:
     dependencies:
+      '@ampda/orchestrator':
+        specifier: workspace:*
+        version: link:../orchestrator
       commander:
-        specifier: ^14.0.0
+        specifier: ^14.0.3
         version: 14.0.3
     devDependencies:
       '@types/node':
-        specifier: ^24.3.0
+        specifier: ^24.13.3
         version: 24.13.3
+      rimraf:
+        specifier: ^6.1.3
+        version: 6.1.3
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(tsx@4.23.12)(typescript@5.9.3)
       tsx:
-        specifier: ^4.20.5
+        specifier: ^4.23.12
         version: 4.23.12
       typescript:
-        specifier: ^5.9.2
+        specifier: ^5.9.3
         version: 5.9.3
 
   apps/orchestrator:
@@ -144,6 +153,49 @@ importers:
         version: 8.5.1(tsx@4.23.12)(typescript@5.9.3)
       tsx:
         specifier: ^4.20.5
+        version: 4.23.12
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  packages/project-export:
+    devDependencies:
+      '@types/node':
+        specifier: ^24.13.3
+        version: 24.13.3
+      rimraf:
+        specifier: ^6.1.3
+        version: 6.1.3
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(tsx@4.23.12)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  packages/workflow-engine:
+    dependencies:
+      '@ampda/agent-runtime':
+        specifier: workspace:*
+        version: link:../agent-runtime
+      '@ampda/core':
+        specifier: workspace:*
+        version: link:../core
+      '@ampda/job-engine':
+        specifier: workspace:*
+        version: link:../job-engine
+    devDependencies:
+      '@types/node':
+        specifier: ^24.13.3
+        version: 24.13.3
+      rimraf:
+        specifier: ^6.1.3
+        version: 6.1.3
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(tsx@4.23.12)(typescript@5.9.3)
+      tsx:
+        specifier: ^4.23.12
         version: 4.23.12
       typescript:
         specifier: ^5.9.3
