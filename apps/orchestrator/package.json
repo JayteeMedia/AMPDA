@@ -1,5 +1,5 @@
 {
-  "name": "@ampda/core",
+  "name": "@ampda/orchestrator",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,15 +10,21 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --watch --format esm,cjs --dts",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
     "clean": "rimraf dist",
     "lint": "echo \"No lint configured\"",
     "test": "echo \"No tests configured\""
   },
-  "dependencies": {},
+  "dependencies": {
+    "@ampda/core": "workspace:*",
+    "@ampda/config": "workspace:*"
+  },
   "devDependencies": {
+    "@types/node": "^24.13.3",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.1",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.3"
   }
 }
