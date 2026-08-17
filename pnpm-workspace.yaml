@@ -2,5 +2,10 @@ packages:
   - "apps/*"
   - "packages/*"
   - "plugins/*"
+  - "tools/*"
+
 allowBuilds:
   esbuild: false
+
+onlyBuiltDependencies:
+  - esbuild

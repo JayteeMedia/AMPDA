@@ -1,9 +1,12 @@
-import { Logger } from "./Logger.js";
+import { Logger, type LogLevel } from "./Logger.js";
 
 export class LoggerFactory {
-  create(service: string): Logger {
-    return new Logger(service);
+  create(
+    level: LogLevel = "info",
+  ): Logger {
+    return new Logger(level);
   }
 }
 
-export const loggerFactory = new LoggerFactory();
+export const loggerFactory =
+  new LoggerFactory();

@@ -9,16 +9,19 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "pnpm run build:js && pnpm run build:types",
+    "build:js": "tsup src/index.ts --format esm,cjs",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
+    "test": "tsx src/test-runtime.ts",
     "clean": "rimraf dist",
-    "lint": "echo \"No lint configured\"",
-    "test": "echo \"No tests configured\""
+    "lint": "echo \"No lint configured\""
   },
   "dependencies": {
+    "@ampda/config": "workspace:*",
     "@ampda/core": "workspace:*",
-    "@ampda/config": "workspace:*"
+    "@ampda/job-engine": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

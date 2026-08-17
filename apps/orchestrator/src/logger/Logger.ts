@@ -1,50 +1,49 @@
-import type { LogLevel } from "./LogLevel.js";
-import type { LogRecord } from "./LogRecord.js";
-import { ConsoleTransport } from "./ConsoleTransport.js";
+export type LogLevel =
+  | "trace"
+  | "debug"
+  | "info"
+  | "warn"
+  | "error";
 
 export class Logger {
   constructor(
-    private readonly service: string,
-    private readonly transport = new ConsoleTransport(),
+    private readonly level: LogLevel = "info",
   ) {}
 
   private write(
     level: LogLevel,
     message: string,
-    metadata?: Record<string, unknown>,
   ): void {
-    const record: LogRecord = {
-      timestamp: new Date().toISOString(),
-      level,
-      service: this.service,
-      message,
-      metadata,
-    };
+    const timestamp = new Date().toISOString();
 
-    this.transport.write(record);
+    console.log(
+      `[${timestamp}] [${level.toUpperCase()}] ${message}`,
+    );
   }
 
-  trace(message: string, metadata?: Record<string, unknown>): void {
-    this.write("trace", message, metadata);
+  trace(message: string): void {
+    this.write("trace", message);
   }
 
-  debug(message: string, metadata?: Record<string, unknown>): void {
-    this.write("debug", message, metadata);
+  debug(message: string): void {
+    this.write("debug", message);
   }
 
-  info(message: string, metadata?: Record<string, unknown>): void {
-    this.write("info", message, metadata);
+  info(message: string): void {
+    this.write("info", message);
   }
 
-  warn(message: string, metadata?: Record<string, unknown>): void {
-    this.write("warn", message, metadata);
+  warn(message: string): void {
+    this.write("warn", message);
   }
 
-  error(message: string, metadata?: Record<string, unknown>): void {
-    this.write("error", message, metadata);
+  error(message: string): void {
+    this.write("error", message);
   }
 
-  fatal(message: string, metadata?: Record<string, unknown>): void {
-    this.write("fatal", message, metadata);
+  getLevel(): LogLevel {
+    return this.level;
   }
 }
+
+export const logger = new Logger();

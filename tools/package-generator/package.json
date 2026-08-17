@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsx src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "test:service": "tsx src/test-service-generator.ts"
   },
   "dependencies": {
     "fs-extra": "^11.3.1",

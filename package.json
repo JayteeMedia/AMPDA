@@ -1,16 +1,18 @@
 {
-    "private": true,
-    "name": "ampda",
-    "version": "0.1.0",
-    "packageManager": "pnpm@11.22.0",
-    "scripts": {
-        "test": "echo \"No tests yet\"",
-        "format": "prettier . --write",
-        "build": "echo \"No build targets yet\"",
-        "verify": "node -e \"console.log('Repository OK')\"",
-        "lint": "echo \"No lint targets yet\""
-    },
-    "devDependencies": {
-        "@types/node": "^24.13.3"
-    }
+  "private": true,
+  "name": "ampda",
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "format": "prettier . --write",
+    "verify": "node -e \"console.log('Repository OK')\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "prettier": "^3.9.6"
+  }
 }

@@ -1,36 +1,96 @@
-import type { Logger } from "../logger/Logger.js";
-import type { EventBus } from "../events/EventBus.js";
-import type { ServiceRegistry } from "../services/ServiceRegistry.js";
+import { config } from "@ampda/config";
 
-export interface RuntimeDependencies {
+import { eventBus } from "../events/EventBus.js";
+import { logger } from "../logger/Logger.js";
+import { jobEngine } from "../services/JobEngineService.js";
+import { serviceRegistry } from "../services/ServiceRegistry.js";
+
+import { EventBus } from "../events/EventBus.js";
+import { Logger } from "../logger/Logger.js";
+import { JobEngineService } from "../services/JobEngineService.js";
+import { ServiceRegistry } from "../services/ServiceRegistry.js";
+
+export interface RuntimeOptions {
   logger: Logger;
   eventBus: EventBus;
   serviceRegistry: ServiceRegistry;
+  jobEngine: JobEngineService;
   environment: string;
 }
 
 export class Runtime {
   constructor(
-    private readonly deps: RuntimeDependencies,
+    private readonly options: RuntimeOptions,
   ) {}
 
-  public async start(): Promise<void> {
-    this.deps.logger.info("Configuration loaded");
-    this.deps.logger.info("Logger initialized");
-    this.deps.logger.info("Event Bus initialized");
-    this.deps.logger.info("Service Registry initialized");
-    this.deps.logger.info(
-      `Environment: ${this.deps.environment}`,
+  async start(): Promise<void> {
+    const {
+      logger,
+      eventBus,
+      serviceRegistry,
+      jobEngine,
+    } = this.options;
+
+    logger.info("Configuration loaded");
+
+    serviceRegistry.register(
+      "logger",
+      logger,
     );
-    this.deps.logger.info("Runtime Ready");
+
+    logger.info("Logger initialized");
+
+    serviceRegistry.register(
+      "eventBus",
+      eventBus,
+    );
+
+    logger.info("Event Bus initialized");
+
+    serviceRegistry.register(
+      "serviceRegistry",
+      serviceRegistry,
+    );
+
+    logger.info(
+      "Service Registry initialized",
+    );
+
+    serviceRegistry.register(
+      "jobEngine",
+      jobEngine,
+    );
+
+    logger.info("Job Engine initialized");
+
+    logger.info(
+      `Environment: ${config.NODE_ENV}`,
+    );
+
+    logger.info("Runtime Ready");
   }
 
-  public async stop(): Promise<void> {
-    this.deps.logger.info("Stopping runtime...");
+  async stop(): Promise<void> {
+    const {
+      logger,
+      eventBus,
+      serviceRegistry,
+    } = this.options;
 
-    this.deps.serviceRegistry.clear();
-    this.deps.eventBus.clear();
+    logger.info("Stopping runtime...");
 
-    this.deps.logger.info("Runtime stopped.");
+    serviceRegistry.clear();
+    eventBus.clear();
+
+    logger.info("Runtime stopped.");
   }
 }
+
+export const runtime =
+  new Runtime({
+    logger,
+    eventBus,
+    serviceRegistry,
+    jobEngine,
+    environment: config.NODE_ENV,
+  });
