@@ -1,13 +1,16 @@
-﻿{
-    "private":  true,
-    "name":  "ampda",
-    "version":  "0.1.0",
-    "packageManager":  "pnpm@11.22.0",
-    "scripts":  {
-                    "test":  "echo \"No tests yet\"",
-                    "format":  "prettier . --write",
-                    "build":  "echo \"No build targets yet\"",
-                    "verify":  "node -e \"console.log(\u0027Repository OK\u0027)\"",
-                    "lint":  "echo \"No lint targets yet\""
-                }
+{
+    "private": true,
+    "name": "ampda",
+    "version": "0.1.0",
+    "packageManager": "pnpm@11.22.0",
+    "scripts": {
+        "test": "echo \"No tests yet\"",
+        "format": "prettier . --write",
+        "build": "echo \"No build targets yet\"",
+        "verify": "node -e \"console.log('Repository OK')\"",
+        "lint": "echo \"No lint targets yet\""
+    },
+    "devDependencies": {
+        "@types/node": "^24.13.3"
+    }
 }
