@@ -21,8 +21,13 @@ export * from "./providers/StubArtworkProvider.js";
 export * from "./providers/MetadataProvider.js";
 export * from "./providers/StubMetadataProvider.js";
 
+export * from "./providers/LyricsProvider.js";
+export * from "./providers/StubLyricsProvider.js";
+
+export * from "./providers/PromptProvider.js";
+export * from "./providers/StubPromptProvider.js";
+
 export * from "./registry/AgentRegistry.js";
-export * from "./registry/AgentCompositionRoot.js";
 
 export * from "./types/AgentCapability.js";
 export * from "./types/AgentStatus.js";

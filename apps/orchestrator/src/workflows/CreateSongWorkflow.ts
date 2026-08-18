@@ -1,7 +1,7 @@
-import { AgentCompositionRoot, AgentExecutor } from "@ampda/agent-runtime";
-import type { LyricsRequest, LyricsResult } from "@ampda/agent-runtime";
+import { AgentRegistry, AgentExecutor } from "@ampda/agent-runtime";
 import type { Job } from "@ampda/job-engine";
 import { JobPriority, JobStatus } from "@ampda/job-engine";
+import { AgentCompositionRoot } from "../bootstrap/AgentCompositionRoot.js";
 
 export interface CreateSongRequest {
   title: string;
@@ -27,8 +27,12 @@ export interface CreateSongResult {
 }
 
 export class CreateSongWorkflow {
-  private readonly registry = AgentCompositionRoot.createRegistry();
+  private readonly registry: AgentRegistry;
   private readonly executor = new AgentExecutor();
+
+  constructor(registry?: AgentRegistry) {
+    this.registry = registry ?? AgentCompositionRoot.createRegistry();
+  }
 
   async execute(
     request: CreateSongRequest,
@@ -47,14 +51,14 @@ export class CreateSongWorkflow {
     // 2. Lyrics
     const lyricsJob = this.createJob("lyrics-job", "Lyrics generation", request);
     const lyricsResult = await this.executor.execute(lyricsAgent as any, lyricsJob) as any;
-    const lyrics = lyricsResult.lyrics;
+    const lyrics = lyricsResult.lyrics as string;
 
     // 3. Prompts
     const promptRequest = { ...request, lyrics };
     const promptJob = this.createJob("prompt-job", "Prompt generation", promptRequest);
     const promptResult = await this.executor.execute(promptAgent as any, promptJob) as any;
-    const musicPrompt = promptResult.musicPrompt;
-    const artworkPrompt = promptResult.artworkPrompt;
+    const musicPrompt = promptResult.musicPrompt as string;
+    const artworkPrompt = promptResult.artworkPrompt as string;
 
     // 4. Music
     const musicJob = this.createJob("music-job", "Music generation", { prompt: musicPrompt });
@@ -67,7 +71,7 @@ export class CreateSongWorkflow {
     // 6. Metadata
     const metadataJob = this.createJob("metadata-job", "Metadata generation", promptRequest);
     const metadataResult = await this.executor.execute(metadataAgent as any, metadataJob) as any;
-    const metadata = metadataResult.metadata;
+    const metadata = metadataResult.metadata as CreateSongResult["metadata"];
 
     return {
       projectDirectory: request.outputDirectory,

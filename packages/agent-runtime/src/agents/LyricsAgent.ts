@@ -1,14 +1,12 @@
 import type { Job } from "@ampda/job-engine";
 
 import { BaseAgent } from "../agent/BaseAgent.js";
+import type { LyricsProvider, LyricsGenerationResult } from "../providers/LyricsProvider.js";
 
 export interface LyricsRequest {
   title?: string;
-
   genre: string;
-
   theme: string;
-
   mood: string;
 }
 
@@ -22,35 +20,24 @@ export class LyricsAgent
     LyricsResult
   >
 {
+  constructor(
+    context: ConstructorParameters<
+      typeof BaseAgent<
+        LyricsRequest,
+        LyricsResult
+      >
+    >[0],
+    private readonly provider: LyricsProvider,
+  ) {
+    super(context);
+  }
+
   async execute(
     job: Job<
       LyricsRequest,
       LyricsResult
     >,
   ): Promise<LyricsResult> {
-    const {
-      title,
-      genre,
-      theme,
-      mood,
-    } = job.payload;
-
-    // TODO:
-    // Replace with configured LLM provider.
-    // (OpenAI, Ollama, etc.)
-
-    return {
-      lyrics:
-`TITLE: ${title ?? "Untitled"}
-
-GENRE: ${genre}
-
-THEME: ${theme}
-
-MOOD: ${mood}
-
-[Placeholder Lyrics]
-`,
-    };
+    return this.provider.generate(job.payload);
   }
 }
