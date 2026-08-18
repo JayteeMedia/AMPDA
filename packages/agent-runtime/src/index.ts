@@ -22,6 +22,7 @@ export * from "./providers/MetadataProvider.js";
 export * from "./providers/StubMetadataProvider.js";
 
 export * from "./registry/AgentRegistry.js";
+export * from "./registry/AgentCompositionRoot.js";
 
 export * from "./types/AgentCapability.js";
 export * from "./types/AgentStatus.js";

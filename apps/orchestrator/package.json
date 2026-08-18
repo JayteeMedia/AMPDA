@@ -21,7 +21,8 @@
   "dependencies": {
     "@ampda/config": "workspace:*",
     "@ampda/core": "workspace:*",
-    "@ampda/job-engine": "workspace:*"
+    "@ampda/job-engine": "workspace:*",
+    "@ampda/agent-runtime": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

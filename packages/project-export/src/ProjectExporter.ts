@@ -1,7 +1,10 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import type { ProjectManifest } from "./ProjectManifest.js";
+import type {
+  ProjectManifest,
+  WorkflowManifest,
+} from "./ProjectManifest.js";
 
 export interface ProjectExportRequest {
   outputDirectory: string;
@@ -15,6 +18,8 @@ export interface ProjectExportRequest {
   metadata: unknown;
 
   manifest: ProjectManifest;
+
+  workflow: WorkflowManifest;
 }
 
 export class ProjectExporter {
@@ -24,38 +29,28 @@ export class ProjectExporter {
 
     await mkdir(
       request.outputDirectory,
-      { recursive: true },
+      {
+        recursive: true,
+      },
     );
 
     await writeFile(
-      join(
-        request.outputDirectory,
-        "lyrics.md",
-      ),
+      join(request.outputDirectory, "lyrics.md"),
       request.lyrics,
     );
 
     await writeFile(
-      join(
-        request.outputDirectory,
-        "music-prompt.txt",
-      ),
+      join(request.outputDirectory, "music-prompt.txt"),
       request.musicPrompt,
     );
 
     await writeFile(
-      join(
-        request.outputDirectory,
-        "artwork-prompt.txt",
-      ),
+      join(request.outputDirectory, "artwork-prompt.txt"),
       request.artworkPrompt,
     );
 
     await writeFile(
-      join(
-        request.outputDirectory,
-        "metadata.json",
-      ),
+      join(request.outputDirectory, "metadata.json"),
       JSON.stringify(
         request.metadata,
         null,
@@ -64,12 +59,18 @@ export class ProjectExporter {
     );
 
     await writeFile(
-      join(
-        request.outputDirectory,
-        "project.json",
-      ),
+      join(request.outputDirectory, "project.json"),
       JSON.stringify(
         request.manifest,
+        null,
+        2,
+      ),
+    );
+
+    await writeFile(
+      join(request.outputDirectory, "workflow.json"),
+      JSON.stringify(
+        request.workflow,
         null,
         2,
       ),

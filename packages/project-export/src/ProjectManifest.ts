@@ -19,5 +19,27 @@ export interface ProjectManifest {
     artworkPrompt: string;
 
     metadata: string;
+
+    workflow: string;
+  };
+}
+
+export interface WorkflowManifest {
+  version: string;
+
+  generatedAt: string;
+
+  status: "completed";
+
+  steps: string[];
+
+  request: {
+    title: string;
+
+    genre: string;
+
+    mood: string;
+
+    theme: string;
   };
 }
