@@ -20,28 +20,82 @@ export class PipelineExecutor {
 
       for (const step of this.steps) {
 
-        await step.execute(context);
+        console.log("");
+        console.log(`▶ ${step.name}`);
 
-        completedSteps.push(step.name);
+        const stepStarted =
+          Date.now();
+
+        await step.execute(
+          context,
+        );
+
+        const elapsed =
+          Date.now() -
+          stepStarted;
+
+        console.log(
+          `✔ ${step.name} (${elapsed} ms)`,
+        );
+
+        completedSteps.push(
+          step.name,
+        );
 
       }
 
+      const total =
+        Date.now() -
+        started;
+
+      console.log("");
+      console.log(
+        `✔ Pipeline completed (${total} ms)`,
+      );
+
       return {
+
         success: true,
-        durationMs: Date.now() - started,
+
+        durationMs: total,
+
         completedSteps,
+
       };
 
     } catch (error) {
 
+      const total =
+        Date.now() -
+        started;
+
+      const failedStep =
+        completedSteps.length <
+        this.steps.length
+          ? this.steps[
+              completedSteps.length
+            ].name
+          : undefined;
+
+      console.error("");
+      console.error(
+        `✖ Pipeline failed in step: ${failedStep}`,
+      );
+
+      console.error(error);
+
       return {
+
         success: false,
-        durationMs: Date.now() - started,
+
+        durationMs: total,
+
         completedSteps,
-        failedStep: completedSteps.length < this.steps.length
-          ? this.steps[completedSteps.length].name
-          : undefined,
+
+        failedStep,
+
         error: error as Error,
+
       };
 
     }

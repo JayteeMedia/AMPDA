@@ -1,7 +1,11 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": [
-    "dist",
-    "**/*.test.ts"
-  ]
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+
+    "composite": false,
+    "incremental": false,
+
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
+  }
 }

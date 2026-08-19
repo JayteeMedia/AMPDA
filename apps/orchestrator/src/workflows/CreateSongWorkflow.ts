@@ -1,6 +1,12 @@
-import { AgentRegistry } from "@ampda/agent-runtime";
+import type {
+  SongProject,
+} from "@ampda/core";
 
 import {
+  AgentRegistry,
+} from "@ampda/agent-runtime";
+
+import type {
   PipelineContext,
 } from "../pipeline/PipelineContext.js";
 
@@ -56,6 +62,8 @@ export interface CreateSongResult {
 
   outputDirectory: string;
 
+  project: SongProject;
+
 }
 
 export class CreateSongWorkflow {
@@ -70,31 +78,31 @@ export class CreateSongWorkflow {
       new PipelineExecutor([
 
         new PlannerStep(
-          this.registry,
+          registry,
         ),
 
         new LyricsStep(
-          this.registry,
+          registry,
         ),
 
         new PromptStep(
-          this.registry,
+          registry,
         ),
 
         new MetadataStep(
-          this.registry,
+          registry,
         ),
 
         new MusicStep(
-          this.registry,
+          registry,
         ),
 
         new ArtworkStep(
-          this.registry,
+          registry,
         ),
 
         new ExportStep(
-          this.registry,
+          registry,
         ),
 
       ]);
@@ -105,12 +113,32 @@ export class CreateSongWorkflow {
     request: CreateSongRequest,
   ): Promise<CreateSongResult> {
 
+    const project: SongProject = {
+
+      id: crypto.randomUUID(),
+
+      createdAt: new Date(),
+
+      updatedAt: new Date(),
+
+      title: request.title,
+
+      genre: request.genre,
+
+      mood: request.mood,
+
+      theme: request.theme,
+
+    };
+
     const context: PipelineContext = {
 
       request,
 
       outputDirectory:
         request.outputDirectory,
+
+      project,
 
     };
 
@@ -131,6 +159,9 @@ export class CreateSongWorkflow {
 
       outputDirectory:
         context.outputDirectory,
+
+      project:
+        context.project,
 
     };
 

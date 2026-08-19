@@ -1,6 +1,7 @@
 import {
   PlannerAgent,
   type WorkflowPlan,
+  type SongRequest,
 } from "@ampda/agent-runtime";
 
 import { AgentIds } from "../../bootstrap/AgentIds.js";
@@ -28,20 +29,32 @@ export class PlannerStep
 
     const job =
       JobFactory.create<
-        typeof context.request,
+        SongRequest,
         WorkflowPlan
       >(
-        context.request,
+        {
+          title:
+            context.request.title,
+
+          genre:
+            context.request.genre,
+
+          mood:
+            context.request.mood,
+
+          theme:
+            context.request.theme,
+        },
         "Planner",
       );
 
     const result =
-      await agent.execute(job);
+      await agent.execute(
+        job,
+      );
 
-    context.metadata = {
-      ...(context.metadata ?? {}),
-      workflowPlan: result,
-    };
+    context.workflowPlan =
+      result;
 
   }
 

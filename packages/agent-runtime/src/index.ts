@@ -49,3 +49,4 @@ export * from "./registry/AgentRegistry.js";
 
 export * from "./types/AgentCapability.js";
 export * from "./types/AgentStatus.js";
+export * from "./types/WorkflowPlan.js";

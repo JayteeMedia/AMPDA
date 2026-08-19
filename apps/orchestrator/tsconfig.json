@@ -7,7 +7,9 @@
     "incremental": true,
     "declaration": true,
     "declarationMap": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts"
@@ -30,6 +32,9 @@
     },
     {
       "path": "../../packages/project-export"
+    },
+    {
+      "path": "../../packages/prompts"
     }
   ]
 }

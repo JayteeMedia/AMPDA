@@ -38,20 +38,34 @@ export class MetadataStep
         MetadataGenerationResult
       >(
         {
-          title: context.request.title,
-          genre: context.request.genre,
-          mood: context.request.mood,
-          theme: context.request.theme,
-          lyrics: context.lyrics ?? "",
+          title:
+            context.request.title,
+
+          genre:
+            context.request.genre,
+
+          mood:
+            context.request.mood,
+
+          theme:
+            context.request.theme,
+
+          lyrics:
+            context.project.lyrics ?? "",
         },
         "Metadata",
       );
 
     const result =
-      await agent.execute(job);
+      await agent.execute(
+        job,
+      );
 
-    context.metadata =
-      result;
+    context.project.metadata =
+      result.metadata;
+
+    context.project.updatedAt =
+      new Date();
 
   }
 

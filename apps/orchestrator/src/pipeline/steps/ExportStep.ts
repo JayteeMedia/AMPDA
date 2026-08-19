@@ -18,57 +18,80 @@ export class ExportStep
     context: PipelineContext,
   ): Promise<void> {
 
+    const project =
+      context.project;
+
+    project.updatedAt =
+      new Date();
+
     await this.exporter.export({
 
       outputDirectory:
         context.outputDirectory,
 
       lyrics:
-        context.lyrics ?? "",
+        project.lyrics ?? "",
 
       musicPrompt:
-        context.musicPrompt ?? "",
+        project.musicPrompt ?? "",
 
       artworkPrompt:
-        context.artworkPrompt ?? "",
+        project.artworkPrompt ?? "",
 
       metadata:
-        context.metadata ?? {},
+        project.metadata ?? {},
 
       manifest: {
-        id: crypto.randomUUID(),
+
+        id:
+          project.id,
 
         title:
-          context.request.title,
+          project.title,
 
         createdAt:
-          new Date().toISOString(),
+          project.createdAt.toISOString(),
 
         genre:
-          context.request.genre,
+          project.genre,
 
         mood:
-          context.request.mood,
+          project.mood,
 
         theme:
-          context.request.theme,
+          project.theme,
 
         files: {
-          lyrics: "lyrics.md",
-          musicPrompt: "music-prompt.txt",
-          artworkPrompt: "artwork-prompt.txt",
-          metadata: "metadata.json",
-          workflow: "workflow.json",
+
+          lyrics:
+            "lyrics.md",
+
+          musicPrompt:
+            "music-prompt.txt",
+
+          artworkPrompt:
+            "artwork-prompt.txt",
+
+          metadata:
+            "metadata.json",
+
+          workflow:
+            "workflow.json",
+
         },
+
       },
 
       workflow: {
-        version: "1.0",
+
+        version:
+          "1.0",
 
         generatedAt:
           new Date().toISOString(),
 
-        status: "completed",
+        status:
+          "completed",
 
         steps: [
           "Planner",
@@ -81,18 +104,21 @@ export class ExportStep
         ],
 
         request: {
+
           title:
-            context.request.title,
+            project.title,
 
           genre:
-            context.request.genre,
+            project.genre,
 
           mood:
-            context.request.mood,
+            project.mood,
 
           theme:
-            context.request.theme,
+            project.theme,
+
         },
+
       },
 
     });

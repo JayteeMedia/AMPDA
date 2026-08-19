@@ -19,12 +19,13 @@
     "lint": "echo \"No lint configured\""
   },
   "dependencies": {
+    "@ampda/agent-runtime": "workspace:*",
     "@ampda/config": "workspace:*",
     "@ampda/core": "workspace:*",
     "@ampda/job-engine": "workspace:*",
-    "@ampda/agent-runtime": "workspace:*",
     "@ampda/openai-provider": "workspace:*",
-    "@ampda/project-export": "workspace:*"
+    "@ampda/project-export": "workspace:*",
+    "@ampda/prompts": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

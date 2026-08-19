@@ -1,4 +1,5 @@
 export * from "./bootstrap/bootstrap.js";
+export * from "./bootstrap/AgentCompositionRoot.js";
 
 export * from "./events/EventBus.js";
 

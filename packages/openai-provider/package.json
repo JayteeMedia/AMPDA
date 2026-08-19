@@ -17,8 +17,10 @@
     "test": "echo \"No tests configured\""
   },
   "dependencies": {
+    "@ampda/core": "workspace:*",
     "@ampda/agent-runtime": "workspace:*",
     "@ampda/config": "workspace:*",
+    "@ampda/prompts": "workspace:*",
     "openai": "^4.20.0"
   },
   "devDependencies": {

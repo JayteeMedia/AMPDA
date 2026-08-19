@@ -38,8 +38,11 @@ export class LyricsStep
     const result =
       await agent.execute(job);
 
-    context.lyrics =
+    context.project.lyrics =
       result.lyrics;
+
+    context.project.updatedAt =
+      new Date();
 
   }
 

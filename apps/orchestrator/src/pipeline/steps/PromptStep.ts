@@ -55,19 +55,24 @@ export class PromptStep
             context.request.mood,
 
           lyrics:
-            context.lyrics ?? "",
+            context.project.lyrics ?? "",
         },
         "Prompt",
       );
 
     const result =
-      await agent.execute(job);
+      await agent.execute(
+        job,
+      );
 
-    context.musicPrompt =
+    context.project.musicPrompt =
       result.musicPrompt;
 
-    context.artworkPrompt =
+    context.project.artworkPrompt =
       result.artworkPrompt;
+
+    context.project.updatedAt =
+      new Date();
 
   }
 

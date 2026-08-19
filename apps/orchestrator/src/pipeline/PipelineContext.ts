@@ -1,19 +1,23 @@
-import type { CreateSongRequest } from "../workflows/CreateSongWorkflow.js";
+import type {
+  SongProject,
+} from "@ampda/core";
+
+import type {
+  CreateSongRequest,
+} from "../workflows/CreateSongWorkflow.js";
 
 export interface PipelineContext {
+
   request: CreateSongRequest;
 
   outputDirectory: string;
 
-  lyrics?: string;
+  project: SongProject;
 
-  musicPrompt?: string;
-
-  artworkPrompt?: string;
-
-  metadata?: unknown;
+  workflowPlan?: unknown;
 
   trackId?: string;
 
   imageId?: string;
+
 }

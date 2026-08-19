@@ -1,0 +1,15 @@
+{
+  "id": "1e65dbee-2459-4348-9fe1-0ddb0d257ce2",
+  "title": "Still Here",
+  "createdAt": "2026-08-19T12:36:51.457Z",
+  "genre": "Hip Hop",
+  "mood": "Dark",
+  "theme": "Overcoming adversity",
+  "files": {
+    "lyrics": "lyrics.md",
+    "musicPrompt": "music-prompt.txt",
+    "artworkPrompt": "artwork-prompt.txt",
+    "metadata": "metadata.json",
+    "workflow": "workflow.json"
+  }
+}

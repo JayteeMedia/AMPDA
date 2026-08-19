@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "generatedAt": "2026-08-19T12:38:28.367Z",
+  "status": "completed",
+  "steps": [
+    "Planner",
+    "Lyrics",
+    "Prompt",
+    "Metadata",
+    "Music",
+    "Artwork",
+    "Export"
+  ],
+  "request": {
+    "title": "Still Here",
+    "genre": "Hip Hop",
+    "mood": "Dark",
+    "theme": "Overcoming adversity"
+  }
+}

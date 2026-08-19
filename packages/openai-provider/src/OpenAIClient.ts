@@ -1,37 +1,124 @@
-import OpenAI from "openai";
 import { config } from "@ampda/config";
 
 export class OpenAIClient {
-  private openai: OpenAI;
-  private model: string;
+
+  private readonly baseUrl: string;
+
+  private readonly model: string;
 
   constructor() {
-    this.model = config.OPENAI_MODEL || "llama3"; // Default model
 
-    this.openai = new OpenAI({
-      apiKey: config.OPENAI_API_KEY || "dummy", // Dummy key for local endpoints
-      baseURL: config.OPENAI_BASE_URL || "http://localhost:11434/v1", // Default to Ollama local endpoint
-      maxRetries: 3,
-    });
-  }
+    if (!config.OPENAI_MODEL) {
 
-  async generateText(prompt: string, systemPrompt?: string): Promise<string> {
-    try {
-      const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [];
-      if (systemPrompt) {
-        messages.push({ role: "system", content: systemPrompt });
-      }
-      messages.push({ role: "user", content: prompt });
+      throw new Error(
+        "OPENAI_MODEL is not configured.",
+      );
 
-      const response = await this.openai.chat.completions.create({
-        model: this.model,
-        messages,
-      });
-
-      return response.choices[0]?.message?.content || "";
-    } catch (error) {
-      console.error("[OpenAIClient] Error generating text:", error);
-      throw new Error(`OpenAI generation failed: ${error instanceof Error ? error.message : String(error)}`);
     }
+
+    this.model =
+      config.OPENAI_MODEL;
+
+    this.baseUrl =
+      (
+        config.OPENAI_BASE_URL ??
+        "http://localhost:11434"
+      ).replace(/\/v1$/, "");
+
   }
+
+  async generateChat(
+    messages: {
+      role: "system" | "user" | "assistant";
+      content: string;
+    }[],
+  ): Promise<string> {
+
+    console.log("");
+    console.log("=========================================");
+    console.log("OLLAMA REQUEST");
+    console.log("=========================================");
+
+    const body = {
+
+      model: this.model,
+
+      messages,
+
+      think: false,
+
+      stream: false,
+
+    };
+
+    console.log(
+      JSON.stringify(
+        body,
+        null,
+        2,
+      ),
+    );
+
+    const started =
+      Date.now();
+
+    const response =
+      await fetch(
+
+        `${this.baseUrl}/api/chat`,
+
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "Content-Type":
+              "application/json",
+
+          },
+
+          body:
+            JSON.stringify(body),
+
+        },
+
+      );
+
+    if (!response.ok) {
+
+      throw new Error(
+        await response.text(),
+      );
+
+    }
+
+    const json =
+      await response.json() as {
+
+        message?: {
+
+          content?: string;
+
+        };
+
+      };
+
+    console.log("");
+    console.log("=========================================");
+    console.log("OLLAMA RESPONSE");
+    console.log("=========================================");
+    console.log(
+      `Elapsed: ${Date.now() - started} ms`,
+    );
+    console.log("=========================================");
+    console.log("");
+
+    return (
+      json.message?.content ??
+      ""
+    );
+
+  }
+
 }
