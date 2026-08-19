@@ -9,12 +9,12 @@ import {
   MetadataGeneratorAgent,
   StubMusicProvider,
   StubArtworkProvider,
-  StubMetadataProvider,
 } from "@ampda/agent-runtime";
 import {
   OpenAIClient,
   OpenAILyricsProvider,
   OpenAIPromptProvider,
+  OpenAIMetadataProvider,
 } from "@ampda/openai-provider";
 
 export class AgentCompositionRoot {
@@ -87,7 +87,7 @@ export class AgentCompositionRoot {
           capabilities: [AgentCapability.MetadataGeneration],
           metadata: {},
         },
-        new StubMetadataProvider(),
+        new OpenAIMetadataProvider(client),
       ),
     );
 

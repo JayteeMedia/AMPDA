@@ -1,17 +1,26 @@
 {
-  "extends": "../../tsconfig.build.base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "types": ["node"]
+
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+
+    "composite": false,
+    "incremental": false,
+
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
   },
-  "include": ["src/**/*"],
-  "references": [
-    {
-      "path": "../agent-runtime"
-    },
-    {
-      "path": "../config"
-    }
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "src/test-*.ts"
   ]
 }

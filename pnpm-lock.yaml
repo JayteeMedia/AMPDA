@@ -57,6 +57,9 @@ importers:
       '@ampda/openai-provider':
         specifier: workspace:*
         version: link:../../packages/openai-provider
+      '@ampda/project-export':
+        specifier: workspace:*
+        version: link:../../packages/project-export
     devDependencies:
       '@types/node':
         specifier: ^24.13.3

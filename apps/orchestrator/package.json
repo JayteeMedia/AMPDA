@@ -23,7 +23,8 @@
     "@ampda/core": "workspace:*",
     "@ampda/job-engine": "workspace:*",
     "@ampda/agent-runtime": "workspace:*",
-    "@ampda/openai-provider": "workspace:*"
+    "@ampda/openai-provider": "workspace:*",
+    "@ampda/project-export": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
