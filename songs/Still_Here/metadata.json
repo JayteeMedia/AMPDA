@@ -3,15 +3,15 @@
   "genre": "Hip Hop",
   "mood": "Dark",
   "theme": "Overcoming adversity",
-  "description": "A gritty, atmospheric track exploring the resilience of finding light in shadowed times. Features deep basslines and haunting introspective lyrics.",
+  "description": "A hauntingly dark hip-hop track that explores the resilience of the human spirit. Featuring moody synthlines and a gritty bassline, it tells a story of rising from ashes through introspection and determination.",
   "tags": [
-    "lo-fi",
+    "resilience",
+    "grimey beats",
+    "ballad",
     "emotional",
-    "inspiring",
-    "urban",
-    "minor-key"
+    "underdog"
   ],
   "bpm": 120,
-  "key": "C# Minor",
+  "key": "F Minor",
   "version": "1.0"
 }

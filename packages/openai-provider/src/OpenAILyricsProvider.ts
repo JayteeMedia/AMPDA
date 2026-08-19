@@ -14,7 +14,7 @@ export class OpenAILyricsProvider
 {
   constructor(
     private readonly client: OpenAIClient,
-    private readonly _prompts: PromptManager,
+    private readonly prompts: PromptManager,
   ) {}
 
   async generate(
@@ -32,26 +32,42 @@ export class OpenAILyricsProvider
     console.log("=========================================");
     console.log(request);
     console.log("=========================================");
-    console.log("");
+
+    const systemPrompt =
+      await this.prompts.renderAgentPrompt(
+        "lyrics",
+        {
+          title:
+            request.title ?? "Untitled",
+
+          genre:
+            request.genre,
+
+          mood:
+            request.mood,
+
+          theme:
+            request.theme,
+        },
+      );
+
+    const userPrompt =
+      [
+        `Song Title: ${request.title ?? "Untitled"}`,
+        `Genre: ${request.genre}`,
+        `Mood: ${request.mood}`,
+        `Theme: ${request.theme}`,
+      ].join("\n");
 
     const lyrics =
       await this.client.generateChat([
         {
           role: "system",
-          content:
-            "You are a professional hip hop songwriter. Return only complete song lyrics.",
+          content: systemPrompt,
         },
         {
           role: "user",
-          content: [
-            `Title: ${request.title ?? "Untitled"}`,
-            `Genre: ${request.genre}`,
-            `Mood: ${request.mood}`,
-            `Theme: ${request.theme}`,
-            "",
-            "Write complete song lyrics.",
-            "Return only the lyrics.",
-          ].join("\n"),
+          content: userPrompt,
         },
       ]);
 
