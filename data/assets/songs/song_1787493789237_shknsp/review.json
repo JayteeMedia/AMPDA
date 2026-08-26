@@ -1,0 +1,14 @@
+{
+  "songId": "song_1787493789237_shknsp",
+  "approved": true,
+  "score": 100,
+  "reviewedAt": "2026-08-23T14:03:31.823Z",
+  "checks": {
+    "song": true,
+    "plan": true,
+    "writing": true,
+    "production": true,
+    "requiredAssets": true
+  },
+  "issues": []
+}

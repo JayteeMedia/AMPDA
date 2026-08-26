@@ -1,66 +1,315 @@
-import {
-  JobExecutor,
-  JobPriority,
+﻿import {
   JobQueue,
+  JobPriority,
   JobStatus,
+  JobExecutor,
+  JobEventBus,
   type Job,
+  type JobEventType,
 } from "./index.js";
 
-async function main(): Promise<void> {
-  const queue = new JobQueue();
-
-  const executor = new JobExecutor();
-
-  const job: Job<string, string> = {
-    id: "job-001",
-
-    name: "HelloJob",
-
-    payload: "AMPDA",
-
-    priority: JobPriority.Normal,
-
+function createJob(
+  id: string,
+  priority: JobPriority,
+): Job {
+  return {
+    id,
+    name: id,
+    payload: {
+      id,
+    },
+    priority,
     status: JobStatus.Pending,
-
+    context: {
+      tags: [],
+      metadata: {},
+    },
     metadata: {},
-
     createdAt: new Date(),
   };
+}
 
-  queue.enqueue(job);
+async function testPriorityQueue(): Promise<void> {
+  const queue = new JobQueue();
 
-  console.log("");
+  queue.enqueue(
+    createJob(
+      "normal-1",
+      JobPriority.Normal,
+    ),
+  );
 
-  console.log("Queue Size:", queue.size());
+  queue.enqueue(
+    createJob(
+      "critical-1",
+      JobPriority.Critical,
+    ),
+  );
 
-  const next = queue.dequeue();
+  queue.enqueue(
+    createJob(
+      "low-1",
+      JobPriority.Low,
+    ),
+  );
 
-  if (!next) {
-    throw new Error("No job available.");
+  queue.enqueue(
+    createJob(
+      "high-1",
+      JobPriority.High,
+    ),
+  );
+
+  queue.enqueue(
+    createJob(
+      "critical-2",
+      JobPriority.Critical,
+    ),
+  );
+
+  const order: string[] = [];
+
+  while (!queue.isEmpty()) {
+    const job = queue.dequeue();
+
+    if (job) {
+      order.push(job.id);
+    }
   }
 
-  const result = await executor.execute(
-    next,
-    async (job) => {
-      return `AMPDA Job Engine Online: ${job.payload}`;
+  const expected = [
+    "critical-1",
+    "critical-2",
+    "high-1",
+    "normal-1",
+    "low-1",
+  ];
+
+  if (
+    JSON.stringify(order) !==
+    JSON.stringify(expected)
+  ) {
+    throw new Error(
+      `Priority queue failed. Expected ${expected.join(", ")}, got ${order.join(", ")}.`,
+    );
+  }
+}
+
+async function testSuccessfulExecution(): Promise<void> {
+  const events = new JobEventBus();
+
+  const received: JobEventType[] = [];
+
+  events.subscribe(
+    "job.started",
+    event => {
+      received.push(event.type);
     },
   );
 
-  console.log("");
+  events.subscribe(
+    "job.completed",
+    event => {
+      received.push(event.type);
+    },
+  );
 
-  console.log("Job:", next.name);
+  const job = createJob(
+    "event-job",
+    JobPriority.Normal,
+  );
 
-  console.log("Status:", next.status);
+  const executor = new JobExecutor(events);
 
-  console.log("Success:", result.success);
+  const result = await executor.execute(
+    job,
+    async currentJob => {
+      if (currentJob.id !== "event-job") {
+        throw new Error(
+          "Incorrect job received.",
+        );
+      }
 
-  console.log("Result:", result.data);
+      return "success";
+    },
+  );
 
-  console.log("Duration:", result.durationMs, "ms");
+  if (!result.success) {
+    throw new Error(
+      "Expected successful execution.",
+    );
+  }
+
+  if (
+    job.status !==
+    JobStatus.Completed
+  ) {
+    throw new Error(
+      "Job did not reach completed state.",
+    );
+  }
+
+  const expected = [
+    "job.started",
+    "job.completed",
+  ];
+
+  if (
+    JSON.stringify(received) !==
+    JSON.stringify(expected)
+  ) {
+    throw new Error(
+      `Unexpected events: ${received.join(", ")}`,
+    );
+  }
 }
 
-main().catch((error) => {
+async function testFailureEvent(): Promise<void> {
+  const events = new JobEventBus();
+
+  let failed = false;
+
+  events.subscribe(
+    "job.failed",
+    event => {
+      failed = true;
+
+      if (!event.job.error) {
+        throw new Error(
+          "Failed event did not contain job error.",
+        );
+      }
+    },
+  );
+
+  const executor = new JobExecutor(events);
+
+  const job = createJob(
+    "failure-job",
+    JobPriority.Normal,
+  );
+
+  const result = await executor.execute(
+    job,
+    async () => {
+      throw new Error(
+        "Intentional test failure.",
+      );
+    },
+  );
+
+  if (result.success) {
+    throw new Error(
+      "Failure job unexpectedly succeeded.",
+    );
+  }
+
+  if (!failed) {
+    throw new Error(
+      "Failed event was not emitted.",
+    );
+  }
+
+  if (
+    job.status !==
+    JobStatus.Failed
+  ) {
+    throw new Error(
+      "Job did not reach failed state.",
+    );
+  }
+}
+
+async function testCancellation(): Promise<void> {
+  const events = new JobEventBus();
+
+  let cancelled = false;
+
+  events.subscribe(
+    "job.cancelled",
+    event => {
+      cancelled = true;
+
+      if (
+        event.job.status !==
+        JobStatus.Cancelled
+      ) {
+        throw new Error(
+          "Cancelled event contained incorrect job status.",
+        );
+      }
+
+      if (!event.error) {
+        throw new Error(
+          "Cancelled event did not contain an error.",
+        );
+      }
+
+      if (!event.result) {
+        throw new Error(
+          "Cancelled event did not contain a JobResult.",
+        );
+      }
+    },
+  );
+
+  const executor = new JobExecutor(events);
+
+  const job = createJob(
+    "cancelled-job",
+    JobPriority.Normal,
+  );
+
+  job.status = JobStatus.Cancelled;
+
+  const result = await executor.execute(
+    job,
+    async () => {
+      throw new Error(
+        "Cancelled job must not execute.",
+      );
+    },
+  );
+
+  if (result.success) {
+    throw new Error(
+      "Cancelled job unexpectedly succeeded.",
+    );
+  }
+
+  if (!cancelled) {
+    throw new Error(
+      "Cancelled event was not emitted.",
+    );
+  }
+
+  if (
+    job.status !==
+    JobStatus.Cancelled
+  ) {
+    throw new Error(
+      "Cancelled job status changed unexpectedly.",
+    );
+  }
+}
+
+async function main(): Promise<void> {
+  await testPriorityQueue();
+  await testSuccessfulExecution();
+  await testFailureEvent();
+  await testCancellation();
+
+  console.log(
+    "JOB ENGINE TESTS: PASS",
+  );
+}
+
+main().catch(error => {
+  console.error(
+    "JOB ENGINE TESTS: FAIL",
+  );
+
   console.error(error);
 
-  process.exit(1);
+  process.exitCode = 1;
 });

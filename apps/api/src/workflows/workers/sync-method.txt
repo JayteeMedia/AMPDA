@@ -1,0 +1,70 @@
+﻿  private async synchronizeJobStatus(
+    job: WorkflowJob,
+  ): Promise<void> {
+
+    const song =
+      await this.requireSong(
+        job.songId,
+      );
+
+    switch (job.type) {
+
+      case "song_planning":
+
+        if (song.status !== "queued") {
+          throw new Error(
+            `Invalid starting status for song_planning: ` +
+            `expected queued, got ${song.status}`,
+          );
+        }
+
+        return;
+
+      case "song_writing":
+
+        if (song.status !== "planning") {
+          throw new Error(
+            `Invalid starting status for song_writing: ` +
+            `expected planning, got ${song.status}`,
+          );
+        }
+
+        return;
+
+      case "song_production":
+
+        if (song.status !== "writing") {
+          throw new Error(
+            `Invalid starting status for song_production: ` +
+            `expected writing, got ${song.status}`,
+          );
+        }
+
+        return;
+
+      case "song_review":
+
+        if (song.status !== "production") {
+          throw new Error(
+            `Invalid starting status for song_review: ` +
+            `expected production, got ${song.status}`,
+          );
+        }
+
+        return;
+
+      case "song_release":
+
+        if (song.status !== "approved") {
+          throw new Error(
+            `Invalid starting status for song_release: ` +
+            `expected approved, got ${song.status}`,
+          );
+        }
+
+        return;
+
+      default:
+        return;
+    }
+  }

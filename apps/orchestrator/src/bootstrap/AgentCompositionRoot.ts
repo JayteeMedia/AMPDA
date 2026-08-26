@@ -19,6 +19,10 @@ import {
 } from "@ampda/openai-provider";
 
 import {
+  OpenAIPlannerProvider,
+} from "@ampda/planner";
+
+import {
   PromptLoader,
   PromptManager,
 } from "@ampda/prompts";
@@ -64,6 +68,12 @@ export class AgentCompositionRoot {
     // Providers
     //
 
+    const plannerProvider =
+      new OpenAIPlannerProvider(
+        client,
+        promptManager,
+      );
+
     const lyricsProvider =
       new OpenAILyricsProvider(
         client,
@@ -86,19 +96,25 @@ export class AgentCompositionRoot {
 
     registry.register(
 
-      new PlannerAgent({
+      new PlannerAgent(
 
-        id: "planner",
+        {
 
-        name: "Planner",
+          id: "planner",
 
-        capabilities: [
-          AgentCapability.Planning,
-        ],
+          name: "Planner",
 
-        metadata: {},
+          capabilities: [
+            AgentCapability.Planning,
+          ],
 
-      }),
+          metadata: {},
+
+        },
+
+        plannerProvider,
+
+      ),
 
     );
 

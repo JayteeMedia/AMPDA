@@ -1,8 +1,11 @@
 import {
   PlannerAgent,
-  type WorkflowPlan,
   type SongRequest,
 } from "@ampda/agent-runtime";
+
+import type {
+  WorkflowPlan,
+} from "@ampda/planner";
 
 import { AgentIds } from "../../bootstrap/AgentIds.js";
 

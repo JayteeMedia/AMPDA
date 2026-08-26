@@ -1,112 +1,114 @@
 Song Title: Still Here
 
-[Style, Vocals & Production: <=750 characters]
-Dark atmospheric trap beat with a heavy 808 kick pattern and distorted hi-hats. A sampled choir provides a haunting, minor-key backdrop that feels like it's coming from inside a room. Minimalist piano loops add texture without stealing focus. The vocals are delivered in close-mic'd intimacy but with aggressive ad-libs to emphasize resilience. The production cuts out occasionally during verses for breathroom before building tension toward the chorus with added bass distortion and layered synth stabs.[Style, Vocals & Production: <=750 characters]
-
-Dark atmospheric trap beat with a heavy 808 kick pattern and distorted hi-hats. A sampled choir provides a haunting, minor-key backdrop that feels like it's coming from inside a room. Minimalist piano loops add texture without stealing focus. The vocals are delivered in close-mic'd intimacy but with aggressive ad-libs to emphasize resilience. The production cuts out occasionally during verses for breathroom before building tension toward the chorus with added bass distortion and layered synth stabs.[Style, Vocals & Production: <=750 characters]
-
-Dark atmospheric trap beat with a heavy 808 kick pattern and distorted hi-hats. A sampled choir provides a haunting, minor-key backdrop that feels like it's coming from inside a room. Minimalist piano loops add texture without stealing focus. The vocals are delivered in close-mic'd intimacy but with aggressive ad-libs to emphasize resilience. The production cuts out occasionally during verses for breathroom before building tension toward the chorus with added bass distortion and layered synth stabs.
+[Style: Dark Trap | Vocals: Minimalist & Whispered then Assertive Production: Heavy 808s] 
 
 [Intro]
-[Sound Elements: Vinyl crackle, distant rain sample, low cello drone swells slowly]
-[Automation: Pad fade-in bars 1–4 over a two-bar gap, reverb tail on first word "breath"]
-[Dynamic: Atmospheric, gradual build from near-silence to full atmosphere]
 
-Lyrics...
-They said I wouldn't make it past the winter line (yeah)
-Left me standing in the ash of all that pain you signed up for.
-I was broken glass trying to find a shape again (oh no)
-But the dust settles and you see what's left inside my frame (inside me).
+[Sound Elements: Vinyl crackle, distant rain ambience, slow sidekick bass swell]
 
-(Ad-libs: "Listen...")
-(Echo: "dark…")
+[Automation: pad fade-in bars 1–4, sub-bass ducking on hi-hat rolls]
+
+[Dynamic: Atmospheric tension building to rhythmic thump]
+
+I breathe for them in here
+They think the fire died inside (died)
+Still breathing
+In the middle of this cold and endless night (cold... still...) 
+Can you hear it? Can they feel it? It's heavy now. Yeah, I ain't dead yet.
 
 [Verse 1]
-[Sound Elements: Snare rolls begin building intensity, sidechain compression kicks in]
-[Automation: Increase bass depth on every fourth beat to match vocal force]
-[Dynamic: Mid-range intensity, aggressive flow with internal rhymes on rhythm and rhyme scheme consistency]
 
-Lyrics...
-Count the cracks they wanted me to count them down (down)
-But I'm counting up the stories that we didn't own.
-They painted pictures in my head then tried to lock it tight
-Now I walk through every fire and I don't need light or sight.
-The world was red, but now it's just a grey design (grey)
-Turning poison into something that might actually bring me rain again.
-Every scar is proof the war didn't end inside my chest
-Still standing here like an anchor on a boat with no rest.
+[Sound Elements: Hard kick pattern enters with aggressive hi-hat rolls | FX riser on second word]
 
-(Ad-libs: "Never gone…")
-(Echo: "still… stand…")
+[Automation: Pitch-shifted vocal harmony starts in bars 4–8, bass distortion increase]
+
+[Dynamic: Low energy turning into aggressive pressure build]
+
+I woke up to the silence of a place they built (built it)
+To turn my name and hope inside these walls just dust and grit
+Now all I see is smoke from what remains behind me now.
+They tried to break the spirit on this broken bone, so quiet sound.
+But I’m digging through the cracks where I can find some gold in rusted wire (find out).
 
 [Pre-Chorus]
-[Sound Elements: Hi-hat speed increases, sub-bass frequency rises sharply]
-[Automation: Sudden drop in reverb to create wall of sound effect before the final chord change]
-[Dynamic: Rising tension, building toward explosive release point]
 
-Lyrics...
-The sky didn't fall and it never will break through (no)
-But I learned how to build my own home right out of the blue.
-They tried to bury me where the roots couldn't touch ground
-I grew new branches from a place that they thought was wound up closed down.
+[Sound Elements: Synth pluck stutters on every beat drop | Reverse reverb tail fades in slowly]
 
-(Ad-libs: "Watch me grow…")
-(Echo: "alive…")
+[Automation: Vocal filter opens up bar 5, bass kicks get harder and syncopated]
+
+[Dynamic: Rising energy matching heart rate tension before release] 
+Every scar I got is just a lesson from the fire
+I’m not standing for them anymore... but still here. (still...) It burns hot deep inside. They can't touch it now.
 
 [Chorus]
-[Sound Elements: Heavy distortion on kick drum, choir sample hits full volume with reverb delay]
-[Automation: Vocal chorus effect applied to lead vocals for wider presence across bars 5–8 of the section]
-[Dynamic: Peak emotional intensity, anthemic delivery but grounded in grit]
 
-Lyrics...
-Still here when I thought that was goodbye (it ain't)
-I turned my pain into a story they couldn't deny.
-The fire tried to kill what we found inside our soul deep down deep down.
-But the ashes don't bury me, they're just dust before it's new.
-Yeah, still here, watching shadows dance and let 'em in (in)
-While everyone else is running for cover or hiding from sin.
+[Sound Elements: Full sub drop, heavy distorted snare roll | Vocal effects layered like chains]
 
-(Ad-libs: "Run if you can…")
-(Echo: "burning up the ground…")
+[Automation: Layered harmonies auto-tune slightly wider on "Still" and chanted ad-logs]
+
+[Dynamic: Explosive peak with sustained bass hold through chorus length] 
+They tried to bury what I became so deep in the dark
+But they can't lock you away when fire comes back (come out tonight)
+I'm still here, I survived all that noise.
+Yeah, standing where I was never forced down on ground floor again
+Still breathing now...
 
 [Verse 2]
-Only repeat production blocks if they change.
-Lyrics...
-The mirror shows a stranger who had no choice but to fight (fight)
-Toxic love, toxic peace now I just don't want to lie or die tonight.
-They gave me pieces and told them how they wanted it put together clean
-But the picture doesn't fit when you lose all that meaning again.
-Now I wear my broken parts like armor made of steel cold (cold)
-Walking through a battlefield where only the dead get told on by the phone or sold.
 
-(Ad-libs: "Cold…")
-(Echo: "armor up…")
+[Sound Elements: Minimalist trap loop | Bass returns with added metallic texture for edge and grit]
+
+[Automation: Vocal layering creates echo effect "over" lyrics in bars 6–10]
+
+[Dynamic: Aggressive flow transitioning to calm resolve at end of section]
+I don't need permission from a ghost that doesn't exist anymore. (exist...) 
+Look in the mirror, see what you made when I woke up on time again. Yeah. They can take it all for fun now but they will lose control later.
+
+[Pre-Chorus]
+
+[Sound Elements: Synth pluck stutters on every beat drop | Reverse reverb tail fades more heavily]
+
+[Automation: Vocal filter opens wider bar 5, bass kicks aggressive and syncopated]
+
+[Dynamic: Rising energy matching heart rate tension before release match the Chorus buildup again.] 
+Every scar I got is just a lesson from that fire.
+I'm not standing for them anymore... but still here (but). 
+
+[Chorus]
+
+[Sound Elements: Full sub drop | Heavy distorted snare roll | Vocal effects layered like chains on "Still"]
+
+[Automation: Harmonies auto-tune wider on final note, vocal reverb tail extends across section change]
+
+[Dynamic: Powerful climax with sustained bass hold and high-energy synth lead] 
+They tried to bury what I became so deep in the dark.
+But they can't lock you away when fire comes back (come out tonight).
+I'm still here... survived all that noise, yeah standing where I was never forced down on ground floor again. Still breathing now...
 
 [Bridge]
-Only repeat production blocks if they change.
-Lyrics...
-If I disappear then who will be left in this world to watch (watch)
-The rain wash everything clean and show you what was worth?
-Time moves slow when you're counting down the final seconds here
-But time stands still while we make something beautiful from all our tears.
 
-(Ad-libs: "Beautiful…")
-(Echo: "tears into art…")
+[Sound Elements: Beat strips kick temporarily leaving only snare and hi-hats before crash | Deep sub drop returns with reverb tails]
+
+[Automation: Vocal delay increases for "I'm not giving up", then auto-modulation pitch shift effect added to bass line during bridge breakdown]
+
+[Dynamic: Intense buildup followed by sudden silence, vocal ad-lib in center bar 5 only with no instrumental noise before final explosion of chorus elements returning.]
+Let them think they won this whole war. (They won?) 
+But the light was never turned off when I started to glow inside out tonight again here now...
 
 [Final Chorus]
-Only repeat production blocks if they change.
-Lyrics...
-Still here when I thought that was goodbye (it ain't)
-I turned my pain into a story they couldn't deny.
-The fire tried to kill what we found inside our soul deep down deep down.
-But the ashes don't bury me, they're just dust before it's new.
-Yeah, still here, watching shadows dance and let 'em in (in)
-While everyone else is running for cover or hiding from sin.
 
-(Ad-ibs: "Let em see…")
-(Echo: "see what remains…")
+[Sound Elements: Maximum bass saturation, added layered percussion | Vocal harmonies stacked higher and more intense]
+
+[Automation: Double-take on final word "Now" with pitch shift effect for emphasis] 
+
+[Dynamic: Emotional catharsis delivering resolution before fade out to quiet space.] 
+Still here... they said it all.
+But the fire was never mine (mine). I'm still breathing now. Yeah, I ain't dead yet.
 
 [Outro]
-[Sound Elements: pads fading, ambient FX, gentle piano, vinyl crackle]
-[Automation: pad fade-out bars 1–4, crackle fade, long vocal reverb tail]
-[Dynamic: reflective closing, slowing down tempo slightly as track ends]
+[Pads fading slowly into vinyl crackle texture | Ambient FX low rumble returns as gentle piano chords overlay bass line from Verse 1] 
+[Vocal processing reduced for distant echo feel and long reverb tail on final phrase.] [Dynamic: Reflective closing to fade out with ambient hum only]
+
+I'm still here, I survived all that noise.
+Still breathing... yeah, I'm standing tall in this dark room now. (dark) 
+
+[Sound Elements: Vinyl crackle increases slowly as track fades completely | Piano chords decay and reverb tail extends past final vocal note for 8 seconds of silence after fade]

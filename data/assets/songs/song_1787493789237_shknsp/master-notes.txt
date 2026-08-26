@@ -1,0 +1,1 @@
+Prepare a clean, competitive master with controlled dynamics, preserved transient information, stable low-end, and sufficient headroom for downstream distribution processing. Avoid destructive loudness chasing.

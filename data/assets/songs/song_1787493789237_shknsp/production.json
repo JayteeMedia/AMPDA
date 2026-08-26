@@ -1,0 +1,35 @@
+{
+  "title": "AMPDA V0.1 Full Pipeline Test",
+  "genre": "Hip Hop",
+  "mood": "Focused",
+  "theme": "Autonomous song production and release",
+  "bpm": 140,
+  "key": "F# minor",
+  "energy": 7,
+  "vocalStyle": "Confident contemporary rap vocal with controlled melodic phrasing.",
+  "productionDirection": "Modern hip-hop production with heavy drums, controlled sub bass, atmospheric layers, and clear vocal space.",
+  "drumDirection": "Punchy modern drums with a controlled kick/sub relationship, crisp percussion, restrained hi-hat density, and arrangement changes that reinforce section transitions.",
+  "bassDirection": "Deep controlled sub bass following the harmonic foundation with additional low-mid texture where required. Preserve headroom for the kick and maintain mono compatibility in the sub region.",
+  "melodicDirection": "Use a restrained melodic palette supporting the song concept without overcrowding the vocal. Build harmonic movement through layered keys, pads, textures, and selective melodic accents.",
+  "atmosphericDirection": "Create a Focused atmospheric environment around the theme \"Autonomous song production and release\". Use transitions, ambience, tonal textures, and controlled space to create depth while preserving vocal intelligibility.",
+  "arrangement": [
+    "1. intro",
+    "2. verse_1",
+    "3. hook",
+    "4. verse_2",
+    "5. hook",
+    "6. bridge",
+    "7. final_hook",
+    "8. outro"
+  ],
+  "vocalProduction": "Confident contemporary rap vocal with controlled melodic phrasing. Deliver the verses with controlled confidence and increase melodic emphasis during the hooks. Keep the lead vocal centered and intelligible. Use controlled compression, corrective EQ, de-essing, tasteful saturation, short ambience, and tempo-synced delays where appropriate. Increase width primarily through doubles, harmonies, and effects rather than excessive widening of the lead.",
+  "mixDirection": "Prioritize vocal intelligibility, kick/sub separation, controlled low-end, balanced midrange, and restrained high-frequency energy. Maintain meaningful dynamic contrast between verses, hooks, bridge, and final section.",
+  "masterDirection": "Prepare a clean, competitive master with controlled dynamics, preserved transient information, stable low-end, and sufficient headroom for downstream distribution processing. Avoid destructive loudness chasing.",
+  "deliverables": [
+    "production.json",
+    "production.spec.txt",
+    "mix-notes.txt",
+    "master-notes.txt"
+  ],
+  "productionNotes": "Production specification generated for \"AMPDA V0.1 Full Pipeline Test\". The arrangement follows the approved 8-section song structure. The production direction is based on the approved planning result and writing direction. Lyrics structure contains 8 sections."
+}

@@ -1,7 +1,7 @@
-import type {
+﻿import type {
   LyricsGenerationResult,
   LyricsProvider,
-} from "@ampda/agent-runtime";
+} from "@ampda/core";
 
 import {
   PromptManager,
@@ -86,3 +86,4 @@ export class OpenAILyricsProvider
   }
 
 }
+

@@ -1,0 +1,18 @@
+SONG REVIEW
+
+TITLE: AMPDA V0.1 Full Pipeline Test
+SONG ID: song_1787493789237_shknsp
+STATUS: APPROVED
+SCORE: 100/100
+
+CHECKS
+- Song: PASS
+- Plan: PASS
+- Writing: PASS
+- Production: PASS
+- Required Assets: PASS
+
+ISSUES
+- None
+
+REVIEWED AT: 2026-08-23T14:03:31.823Z

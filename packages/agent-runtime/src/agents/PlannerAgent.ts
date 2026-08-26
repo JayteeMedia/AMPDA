@@ -2,7 +2,14 @@ import type { Job } from "@ampda/job-engine";
 
 import { BaseAgent } from "../agent/BaseAgent.js";
 
-import type { WorkflowPlan } from "../types/WorkflowPlan.js";
+import type {
+  PlannerProvider,
+  PlannerRequest,
+} from "@ampda/planner";
+
+import type {
+  WorkflowPlan,
+} from "@ampda/planner";
 
 export interface SongRequest {
 
@@ -10,9 +17,9 @@ export interface SongRequest {
 
   genre: string;
 
-  theme: string;
-
   mood: string;
+
+  theme: string;
 
 }
 
@@ -22,94 +29,54 @@ export class PlannerAgent
     WorkflowPlan
   >
 {
+  constructor(
+
+    context: ConstructorParameters<
+      typeof BaseAgent<
+        SongRequest,
+        WorkflowPlan
+      >
+    >[0],
+
+    private readonly provider:
+      PlannerProvider,
+
+  ) {
+
+    super(
+      context,
+    );
+
+  }
 
   async execute(
+
     job: Job<
       SongRequest,
       WorkflowPlan
     >,
+
   ): Promise<WorkflowPlan> {
 
-    const request =
-      job.payload;
-
-    return {
+    const request: PlannerRequest = {
 
       title:
-        request.title,
+        job.payload.title,
 
       genre:
-        request.genre,
+        job.payload.genre,
 
       mood:
-        request.mood,
+        job.payload.mood,
 
       theme:
-        request.theme,
-
-      //
-      // Temporary planning values.
-      // These will become AI-generated later.
-      //
-
-      bpm: 94,
-
-      key: "E Minor",
-
-      timeSignature: "4/4",
-
-      duration: "3:20",
-
-      vocalStyle:
-        "Melodic Rap",
-
-      productionStyle:
-        "Dark Modern Hip Hop",
-
-      artworkStyle:
-        "Cinematic Urban",
-
-      targetAudience:
-        "Hip Hop",
-
-      commercialGoal:
-        "Streaming",
-
-      structure: [
-
-        "Intro",
-
-        "Verse 1",
-
-        "Hook",
-
-        "Verse 2",
-
-        "Hook",
-
-        "Bridge",
-
-        "Hook",
-
-        "Outro",
-
-      ],
-
-      steps: [
-
-        "Generate Lyrics",
-
-        "Generate Music Prompt",
-
-        "Generate Artwork Prompt",
-
-        "Generate Metadata",
-
-        "Export Project",
-
-      ],
+        job.payload.theme,
 
     };
+
+    return this.provider.generate(
+      request,
+    );
 
   }
 

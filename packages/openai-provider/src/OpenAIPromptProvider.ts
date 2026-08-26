@@ -1,8 +1,8 @@
-import type {
+﻿import type {
   PromptProvider,
   PromptGenerationRequest,
   PromptGenerationResult,
-} from "@ampda/agent-runtime";
+} from "@ampda/core";
 
 import { OpenAIClient } from "./OpenAIClient.js";
 
@@ -169,3 +169,4 @@ Return one cohesive prompt.
   }
 
 }
+

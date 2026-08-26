@@ -1,4 +1,4 @@
-export * from "./agent/Agent.js";
+﻿export * from "./agent/Agent.js";
 export * from "./agent/BaseAgent.js";
 
 export * from "./agents/PlannerAgent.js";
@@ -11,6 +11,7 @@ export * from "./agents/MetadataGeneratorAgent.js";
 export * from "./context/AgentContext.js";
 
 export * from "./executor/AgentExecutor.js";
+export * from "./executor/AgentJobDispatcher.js";
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,7 @@ export * from "./registry/AgentRegistry.js";
 
 export * from "./types/AgentCapability.js";
 export * from "./types/AgentStatus.js";
-export * from "./types/WorkflowPlan.js";
+
+
+
+export * from "./SongWorkflowComposition.js";

@@ -18,17 +18,23 @@ export class StubPlannerProvider
 
       song: {
 
-        title: request.title,
+        title:
+          request.title ??
+          "Untitled",
 
-        genre: request.genre,
+        genre:
+          request.genre,
 
-        subgenre: request.genre,
+        subgenre:
+          request.genre,
 
         bpm: 140,
 
-        key: "F Minor",
+        key:
+          "F Minor",
 
-        duration: "3:15",
+        duration:
+          "3:15",
 
         structure: [
           "Intro",
@@ -45,19 +51,24 @@ export class StubPlannerProvider
 
       vocals: {
 
-        style: "Melodic Rap",
+        style:
+          "Melodic Rap",
 
-        tone: request.mood,
+        tone:
+          request.mood,
 
-        delivery: "Confident",
+        delivery:
+          "Confident",
 
-        quality: "Studio",
+        quality:
+          "Studio",
 
       },
 
       production: {
 
-        style: "Dark Trap",
+        style:
+          "Dark Trap",
 
         instrumentation: [
           "808",
@@ -66,38 +77,49 @@ export class StubPlannerProvider
           "Pads",
         ],
 
-        drumStyle: "Trap",
+        drumStyle:
+          "Trap",
 
-        bassStyle: "808",
+        bassStyle:
+          "808",
 
-        atmosphere: request.mood,
+        atmosphere:
+          request.mood,
 
-        mixDirection: "Wide",
+        mixDirection:
+          "Wide Stereo",
 
-        masterDirection: "Commercial",
+        masterDirection:
+          "Commercial Streaming",
 
       },
 
       artwork: {
 
-        style: "Cinematic",
+        style:
+          "Cinematic",
 
         palette: [
           "Black",
-          "Blue",
+          "Steel Blue",
+          "Grey",
         ],
 
-        setting: "Urban",
+        setting:
+          "Urban",
 
-        lighting: "Low Key",
+        lighting:
+          "Low Key",
 
       },
 
       release: {
 
-        audience: "Hip Hop",
+        audience:
+          "Hip Hop",
 
-        commercialGoal: "Streaming",
+        commercialGoal:
+          "Streaming",
 
       },
 

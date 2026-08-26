@@ -5,6 +5,7 @@ packages:
   - "tools/*"
 
 allowBuilds:
+  better-sqlite3: false
   esbuild: false
 
 onlyBuiltDependencies:

@@ -1,3 +1,4 @@
+﻿import type { JobContext } from "./JobContext.js";
 import type { JobPriority } from "./JobPriority.js";
 import type { JobStatus } from "./JobStatus.js";
 
@@ -15,10 +16,9 @@ export interface Job<
 
   status: JobStatus;
 
-  metadata: Record<
-    string,
-    unknown
-  >;
+  context: JobContext;
+
+  metadata: Record<string, unknown>;
 
   createdAt: Date;
 

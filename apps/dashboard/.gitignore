@@ -1,0 +1,13 @@
+dist
+
+node_modules
+
+.vite
+
+coverage
+
+*.log
+
+.DS_Store
+
+Thumbs.db

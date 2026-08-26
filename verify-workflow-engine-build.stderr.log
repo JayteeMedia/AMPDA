@@ -1,0 +1,3 @@
+$ pnpm run build:js && pnpm run build:types
+$ tsup
+$ tsc -p tsconfig.build.json --emitDeclarationOnly

@@ -1,4 +1,4 @@
-import type { Agent } from "../agent/Agent.js";
+﻿import type { Agent } from "../agent/Agent.js";
 
 export class AgentRegistry {
   private readonly agents = new Map<
@@ -18,7 +18,12 @@ export class AgentRegistry {
     this.agents.set(id, agent);
   }
 
-  resolve(id: string): Agent {
+  resolve<
+    TPayload = unknown,
+    TResult = unknown,
+  >(
+    id: string,
+  ): Agent<TPayload, TResult> {
     const agent = this.agents.get(id);
 
     if (!agent) {
@@ -27,7 +32,7 @@ export class AgentRegistry {
       );
     }
 
-    return agent;
+    return agent as Agent<TPayload, TResult>;
   }
 
   has(id: string): boolean {

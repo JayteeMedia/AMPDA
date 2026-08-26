@@ -24,6 +24,7 @@
     "@ampda/core": "workspace:*",
     "@ampda/job-engine": "workspace:*",
     "@ampda/openai-provider": "workspace:*",
+    "@ampda/planner": "workspace:*",
     "@ampda/project-export": "workspace:*",
     "@ampda/prompts": "workspace:*"
   },

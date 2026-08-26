@@ -1,11 +1,11 @@
-import {
+﻿import {
   PromptBuilder,
   PromptManager,
 } from "@ampda/prompts";
 
 import type {
   PromptGenerationRequest,
-} from "@ampda/agent-runtime";
+} from "@ampda/core";
 
 import { OpenAIClient } from "./OpenAIClient.js";
 
@@ -58,3 +58,4 @@ export class OpenAIMusicPromptProvider {
   }
 
 }
+

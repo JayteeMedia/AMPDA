@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `uq_workflow_jobs_song_type` ON `workflow_jobs` (`song_id`,`type`);

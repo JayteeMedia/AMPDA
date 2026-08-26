@@ -2,7 +2,7 @@ import type { WorkflowPlan } from "./WorkflowPlan.js";
 
 export interface PlannerRequest {
 
-  title: string;
+  title?: string;
 
   genre: string;
 

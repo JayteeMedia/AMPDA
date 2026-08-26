@@ -1,17 +1,19 @@
 {
   "title": "Still Here",
-  "genre": "Hip Hop",
+  "genre": "Trap",
   "mood": "Dark",
   "theme": "Overcoming adversity",
-  "description": "A hauntingly dark hip-hop track that explores the resilience of the human spirit. Featuring moody synthlines and a gritty bassline, it tells a story of rising from ashes through introspection and determination.",
+  "description": "A gritty and atmospheric instrumental track featuring deep 808 basslines, slow tempo beats, and distorted piano loops to reflect a journey through hardship toward resilience.",
   "tags": [
-    "resilience",
-    "grimey beats",
-    "ballad",
-    "emotional",
-    "underdog"
+    "dubstep-inflected trap",
+    "emotional vocal sample",
+    "minor key progression",
+    "winter atmosphere",
+    "gospel-influeced choir pad",
+    "fearless energy",
+    "cold synth textures"
   ],
   "bpm": 120,
-  "key": "F Minor",
+  "key": "A Minor",
   "version": "1.0"
 }

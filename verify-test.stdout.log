@@ -1,0 +1,31 @@
+Scope: 16 of 17 workspace projects
+packages/core test$ echo "No tests configured"
+packages/core test: "No tests configured"
+packages/core test: Done
+packages/config test$ echo "No tests configured"
+packages/job-engine test$ tsx src/test-job-engine.ts
+packages/config test: "No tests configured"
+packages/config test: Done
+packages/job-engine test: JOB ENGINE TESTS: PASS
+packages/job-engine test: Done
+packages/openai-provider test$ echo "No tests configured"
+packages/workflow-engine test$ echo "No tests configured"
+packages/openai-provider test: "No tests configured"
+packages/openai-provider test: Done
+packages/workflow-engine test: "No tests configured"
+packages/workflow-engine test: Done
+packages/planner test$ echo "No tests configured"
+packages/planner test: "No tests configured"
+packages/planner test: Done
+packages/agent-runtime test$ echo "No tests configured"
+packages/agent-runtime test: "No tests configured"
+packages/agent-runtime test: Done
+apps/orchestrator test$ tsx src/test-runtime.ts
+apps/orchestrator test: {
+apps/orchestrator test:   success: true,
+apps/orchestrator test:   data: 'Processed: Hello AMPDA',
+apps/orchestrator test:   startedAt: 2026-08-26T08:19:30.769Z,
+apps/orchestrator test:   finishedAt: 2026-08-26T08:19:30.769Z,
+apps/orchestrator test:   durationMs: 0
+apps/orchestrator test: }
+apps/orchestrator test: Done

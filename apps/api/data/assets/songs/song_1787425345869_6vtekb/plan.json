@@ -1,0 +1,22 @@
+{
+  "title": "AMPDA Asset Persistence Test",
+  "genre": "Hip-Hop",
+  "mood": "Dark",
+  "theme": "Building something permanent",
+  "concept": "Develop the song \"AMPDA Asset Persistence Test\" around the theme \"Building something permanent\" with a Dark emotional direction.",
+  "structure": [
+    "intro",
+    "verse_1",
+    "hook",
+    "verse_2",
+    "hook",
+    "bridge",
+    "final_hook",
+    "outro"
+  ],
+  "bpm": 140,
+  "key": "F# minor",
+  "energy": 7,
+  "vocalStyle": "Confident contemporary rap vocal with controlled melodic phrasing.",
+  "productionDirection": "Modern hip-hop production with heavy drums, controlled sub bass, atmospheric layers, and clear vocal space."
+}

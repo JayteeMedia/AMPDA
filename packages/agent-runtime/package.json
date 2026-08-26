@@ -20,7 +20,9 @@
   "dependencies": {
     "@ampda/ai": "workspace:*",
     "@ampda/core": "workspace:*",
-     "@ampda/job-engine": "workspace:*"
+    "@ampda/job-engine": "workspace:*",
+    "@ampda/planner": "workspace:*",
+    "@ampda/workflow-engine": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

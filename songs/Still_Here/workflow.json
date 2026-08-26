@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generatedAt": "2026-08-19T15:25:57.245Z",
+  "generatedAt": "2026-08-19T20:18:18.005Z",
   "status": "completed",
   "steps": [
     "Planner",
@@ -13,7 +13,7 @@
   ],
   "request": {
     "title": "Still Here",
-    "genre": "Hip Hop",
+    "genre": "Trap",
     "mood": "Dark",
     "theme": "Overcoming adversity"
   }

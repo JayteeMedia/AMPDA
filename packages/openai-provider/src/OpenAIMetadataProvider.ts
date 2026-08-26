@@ -1,8 +1,8 @@
-import type {
+﻿import type {
   MetadataProvider,
   MetadataGenerationRequest,
   MetadataGenerationResult,
-} from "@ampda/agent-runtime";
+} from "@ampda/core";
 
 import type {
   SongMetadata,
@@ -142,3 +142,4 @@ Return:
   }
 
 }
+
