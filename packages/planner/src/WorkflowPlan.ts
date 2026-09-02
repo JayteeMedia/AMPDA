@@ -66,6 +66,8 @@ export interface WorkflowPlan {
 
     commercialGoal: string;
 
+    platforms: string[];
+
   };
 
 }

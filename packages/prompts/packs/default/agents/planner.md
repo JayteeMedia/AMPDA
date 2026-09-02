@@ -92,6 +92,18 @@ Do NOT add comments.
 
 Do NOT output any text before or after the JSON.
 
+Do NOT mention internal reasoning, validation, retries, or errors.
+
+Do NOT use code fences.
+
+Use exactly the schema shown below.
+
+Every string field must be a concrete production choice, not a generic placeholder.
+
+Keep the response compact and deterministic.
+
+Prefer concise field values over verbose prose.
+
 ----------------------------------------------------------------------
 VALIDATION RULES
 ----------------------------------------------------------------------
@@ -129,6 +141,12 @@ Spotify
 Apple Music
 
 YouTube
+
+Use the exact section order shown in the schema.
+
+Do not invent extra top-level keys.
+
+Do not omit any required field.
 
 ----------------------------------------------------------------------
 OUTPUT SCHEMA

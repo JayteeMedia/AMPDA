@@ -121,6 +121,12 @@ export class StubPlannerProvider
         commercialGoal:
           "Streaming",
 
+        platforms: [
+          "Spotify",
+          "Apple Music",
+          "YouTube",
+        ],
+
       },
 
     };
