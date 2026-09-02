@@ -1,1 +1,2 @@
-pnpm test
+pnpm --filter @ampda/job-engine test || exit 1
+pnpm --filter @ampda/orchestrator test || exit 1
