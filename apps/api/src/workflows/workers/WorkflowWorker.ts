@@ -381,6 +381,10 @@ export class WorkflowWorker {
       `path=${planAsset}`,
     );
 
+    await this.songService.updateStatus(
+      song.id,
+      "planning",
+    );
     console.log(
       `[WorkflowWorker] writing job queued ` +
       `song=${job.songId}`,
